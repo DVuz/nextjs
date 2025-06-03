@@ -1024,7 +1024,7 @@ function ComplexDependenciesDemo() {
 function DashboardDemo() {
   const [data] = useState(generateAnalyticsData());
   const [dateRange, setDateRange] = useState(30);
-  const [metric, setMetric] = useState('revenue');
+  const [metric, setMetric] = useState<'revenue' | 'users' | 'orders'>('revenue');
 
   const analytics = useMemo(() => {
     console.log('📊 Computing analytics...');
@@ -1055,7 +1055,7 @@ function DashboardDemo() {
 
         <select
           value={metric}
-          onChange={(e) => setMetric(e.target.value)}
+          onChange={(e) => setMetric(e.target.value as 'revenue' | 'users' | 'orders')}
           className="px-3 py-2 border rounded"
         >
           <option value="revenue">Revenue</option>
@@ -1163,12 +1163,12 @@ function EcommerceDemo() {
 function ChartDemo() {
   const [rawData] = useState(generateChartData());
   const [chartType, setChartType] = useState('bar');
-  const [groupBy, setGroupBy] = useState('category');
+  const [groupBy, setGroupBy] = useState<'category' | 'region' | 'month'>('category');
 
   const chartData = useMemo(() => {
     console.log('📈 Processing chart data...');
     const grouped = rawData.reduce((acc, item) => {
-      const key = item[groupBy];
+      const key = item[groupBy as keyof typeof item];
       acc[key] = (acc[key] || 0) + item.value;
       return acc;
     }, {} as Record<string, number>);
@@ -1197,7 +1197,7 @@ function ChartDemo() {
 
         <select
           value={groupBy}
-          onChange={(e) => setGroupBy(e.target.value)}
+          onChange={(e) => setGroupBy(e.target.value as 'category' | 'region' | 'month')}
           className="px-3 py-2 border rounded"
         >
           <option value="category">Group by Category</option>
