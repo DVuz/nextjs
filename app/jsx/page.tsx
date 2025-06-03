@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
   Card,
   CardContent,
@@ -8,13 +8,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {Badge} from "@/components/ui/badge";
+import {Separator} from "@/components/ui/separator";
+import {Button} from "@/components/ui/button";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {
-  AlertCircle,
   Check,
   ChevronRight,
   Code,
@@ -37,7 +36,7 @@ import {
 
 // Enhanced CodeBlock with dynamic styling based on content complexity
 // @ts-ignore
-const CodeBlock = ({ codeString, language = "jsx" }) => {
+const CodeBlock = ({codeString, language = "jsx"}) => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -84,19 +83,22 @@ const CodeBlock = ({ codeString, language = "jsx" }) => {
 
   return (
     <div className={`overflow-hidden group transition-all duration-300 hover:shadow-3xl ${getContainerStyles()}`}>
-      <div className={`flex items-center justify-between transition-all duration-300 ${getHeaderStyles()}`}>
-        <div className="flex items-center gap-3">
+      <div
+        className={`flex items-center justify-between transition-all duration-300  rounded-2xl ${getHeaderStyles()}`}>
+        <div className="flex items-center gap-3 border-t-2 ">
           <div className="flex space-x-2">
             <div className={`rounded-full bg-red-500 shadow-sm ${isComplexCode ? 'w-4 h-4' : 'w-3.5 h-3.5'}`}></div>
             <div className={`rounded-full bg-yellow-500 shadow-sm ${isComplexCode ? 'w-4 h-4' : 'w-3.5 h-3.5'}`}></div>
             <div className={`rounded-full bg-green-500 shadow-sm ${isComplexCode ? 'w-4 h-4' : 'w-3.5 h-3.5'}`}></div>
           </div>
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className={`bg-transparent text-slate-300 border-slate-600/70 ${isComplexCode ? 'text-sm px-3 py-1' : 'text-xs px-2.5 py-0.5'}`}>
+            <Badge variant="outline"
+                   className={`bg-transparent text-slate-300 border-slate-600/70 ${isComplexCode ? 'text-sm px-3 py-1' : 'text-xs px-2.5 py-0.5'}`}>
               {language.toUpperCase()}
             </Badge>
             {lineCount > 1 && (
-              <Badge variant="outline" className={`bg-slate-700/30 text-slate-400 border-slate-600/50 ${isComplexCode ? 'text-xs px-2.5 py-1' : 'text-xs px-2 py-0.5'}`}>
+              <Badge variant="outline"
+                     className={`bg-slate-700/30 text-slate-400 border-slate-600/50 ${isComplexCode ? 'text-xs px-2.5 py-1' : 'text-xs px-2 py-0.5'}`}>
                 {lineCount} dòng
               </Badge>
             )}
@@ -119,7 +121,7 @@ const CodeBlock = ({ codeString, language = "jsx" }) => {
                 }`}
                 onClick={copyToClipboard}
               >
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                {copied ? <Check className="h-4 w-4"/> : <Copy className="h-4 w-4"/>}
                 <span className="ml-2 text-xs font-medium">{copied ? "Đã sao chép" : "Sao chép"}</span>
               </Button>
             </TooltipTrigger>
@@ -130,7 +132,8 @@ const CodeBlock = ({ codeString, language = "jsx" }) => {
         </TooltipProvider>
       </div>
 
-      <pre className={`overflow-x-auto font-mono leading-relaxed text-slate-200 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent ${getCodeStyles()}`}>
+      <pre
+        className={`overflow-x-auto font-mono leading-relaxed text-slate-200 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent ${getCodeStyles()}`}>
         <code className="block whitespace-pre">{codeString.trim()}</code>
       </pre>
     </div>
@@ -139,12 +142,14 @@ const CodeBlock = ({ codeString, language = "jsx" }) => {
 
 // Enhanced ResultPreview component
 // @ts-ignore
-const ResultPreview = ({ children, title = "Kết quả" }) => (
-  <div className="mt-6 rounded-2xl border-2 border-slate-200/50 dark:border-slate-700/60 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-slate-300/60 dark:hover:border-slate-600/70">
-    <div className="px-6 py-4 border-b-2 border-slate-200/40 dark:border-slate-700/50 bg-gradient-to-r from-slate-50/90 to-white/90 dark:from-slate-800/90 dark:to-slate-800/70 backdrop-blur-sm">
+const ResultPreview = ({children, title = "Kết quả"}) => (
+  <div
+    className="mt-6 rounded-2xl border-2 border-slate-200/50 dark:border-slate-700/60 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-slate-300/60 dark:hover:border-slate-600/70">
+    <div
+      className="px-6 py-4 border-b-2 border-slate-200/40 dark:border-slate-700/50 bg-gradient-to-r from-slate-50/90 to-white/90 dark:from-slate-800/90 dark:to-slate-800/70 backdrop-blur-sm">
       <div className="flex items-center gap-3">
         <div className="h-9 w-9 rounded-2xl bg-primary/20 flex items-center justify-center ring-2 ring-primary/20">
-          <Sparkles className="h-5 w-5 text-primary" />
+          <Sparkles className="h-5 w-5 text-primary"/>
         </div>
         <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">{title}</p>
       </div>
@@ -155,23 +160,26 @@ const ResultPreview = ({ children, title = "Kết quả" }) => (
 
 // Enhanced FeatureCard component
 // @ts-ignore
-const FeatureCard = ({ icon: Icon, title, children, index = 0 }) => (
+const FeatureCard = ({icon: Icon, title, children, index = 0}) => (
   <div
     className="rounded-2xl border-2 border-slate-200/50 dark:border-slate-700/50 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-8 shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-primary/40 dark:hover:border-primary/50 hover:-translate-y-2 group cursor-pointer"
-    style={{ animationDelay: `${index * 100}ms` }}
+    style={{animationDelay: `${index * 100}ms`}}
   >
-    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-4 ring-primary/10 group-hover:ring-primary/25 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-      <Icon className="h-8 w-8" />
+    <div
+      className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-4 ring-primary/10 group-hover:ring-primary/25 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+      <Icon className="h-8 w-8"/>
     </div>
-    <h3 className="mb-4 font-bold text-xl text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors duration-300">{title}</h3>
-    <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-200">{children}</div>
+    <h3
+      className="mb-4 font-bold text-xl text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors duration-300">{title}</h3>
+    <div
+      className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-200">{children}</div>
   </div>
 );
 
 // Enhanced Card wrapper for consistent styling
 // @ts-ignore
 // @ts-ignore
-const EnhancedCard = ({ children, className = "", ...props }) => {
+const EnhancedCard = ({children, className = "", ...props}) => {
   return (
     <Card
       className={`border-2 border-slate-200/50 dark:border-slate-700/50 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 ${className}`} {...props}>
@@ -180,11 +188,12 @@ const EnhancedCard = ({ children, className = "", ...props }) => {
   );
 };
 
-// Enhanced CardHeader for consistent styling
+// Enhanced CardHeader for consistent stylingK
 // @ts-ignore
 // @ts-ignore
-const EnhancedCardHeader = ({ children, className = "", ...props }) => (
-  <CardHeader className={`border-b-2 border-slate-100/70 dark:border-slate-700/50 bg-gradient-to-r from-slate-50/90 to-white/90 dark:from-slate-800/90 dark:to-slate-800/70 backdrop-blur-sm ${className}`} {...props}>
+const EnhancedCardHeader = ({children, className = "", ...props}) => (
+  <CardHeader
+    className={`border-b-2 border-slate-100/70 dark:border-slate-700/50 bg-gradient-to-r from-slate-50/90 to-white/90 dark:from-slate-800/90 dark:to-slate-800/70 backdrop-blur-sm ${className}`} {...props}>
     {children}
   </CardHeader>
 );
@@ -192,31 +201,35 @@ const EnhancedCardHeader = ({ children, className = "", ...props }) => (
 // Rule item component
 // @ts-ignore
 // @ts-ignore
-const RuleItem = ({ number, children, index = 0 }) => (
+const RuleItem = ({number, children, index = 0}) => (
   <li
     className="flex items-start gap-4 p-5 rounded-2xl border-2 border-slate-200/30 dark:border-slate-700/30 bg-gradient-to-br from-white/50 to-slate-50/30 dark:from-slate-800/50 dark:to-slate-900/30 hover:border-primary/30 transition-all duration-300 group"
-    style={{ animationDelay: `${index * 100}ms` }}
+    style={{animationDelay: `${index * 100}ms`}}
   >
-    <div className="h-8 w-8 rounded-full bg-primary/15 text-primary font-bold text-sm flex items-center justify-center ring-2 ring-primary/20 group-hover:ring-primary/40 group-hover:bg-primary/25 transition-all duration-300 flex-shrink-0">
+    <div
+      className="h-8 w-8 rounded-full bg-primary/15 text-primary font-bold text-sm flex items-center justify-center ring-2 ring-primary/20 group-hover:ring-primary/40 group-hover:bg-primary/25 transition-all duration-300 flex-shrink-0">
       {number}
     </div>
-    <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">{children}</p>
+    <p
+      className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">{children}</p>
   </li>
 );
 
 // CSS to JSX mapping component
 // @ts-ignore
 // @ts-ignore
-const CSSMapping = ({ css, jsx, index = 0 }) => (
+const CSSMapping = ({css, jsx, index = 0}) => (
   <div
     className="flex items-center justify-between p-4 rounded-xl border-2 border-slate-200/30 dark:border-slate-700/30 bg-gradient-to-r from-slate-50/50 to-white/50 dark:from-slate-800/50 dark:to-slate-900/50 hover:border-primary/20 transition-all duration-300 group"
-    style={{ animationDelay: `${index * 50}ms` }}
+    style={{animationDelay: `${index * 50}ms`}}
   >
-    <code className="text-sm bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-3 py-2 rounded-lg font-mono font-medium">
+    <code
+      className="text-sm bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-3 py-2 rounded-lg font-mono font-medium">
       {css}
     </code>
-    <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-primary transition-colors" />
-    <code className="text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-2 rounded-lg font-mono font-medium">
+    <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-primary transition-colors"/>
+    <code
+      className="text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-2 rounded-lg font-mono font-medium">
       {jsx}
     </code>
   </div>
@@ -532,16 +545,16 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
 
   // CSS to JSX mapping
   const cssToJsx = [
-    { css: "background-color", jsx: "backgroundColor" },
-    { css: "font-size", jsx: "fontSize" },
-    { css: "border-radius", jsx: "borderRadius" },
-    { css: "margin-top", jsx: "marginTop" },
-    { css: "padding-left", jsx: "paddingLeft" },
-    { css: "text-align", jsx: "textAlign" },
-    { css: "box-shadow", jsx: "boxShadow" },
-    { css: "z-index", jsx: "zIndex" },
-    { css: "font-weight", jsx: "fontWeight" },
-    { css: "line-height", jsx: "lineHeight" }
+    {css: "background-color", jsx: "backgroundColor"},
+    {css: "font-size", jsx: "fontSize"},
+    {css: "border-radius", jsx: "borderRadius"},
+    {css: "margin-top", jsx: "marginTop"},
+    {css: "padding-left", jsx: "paddingLeft"},
+    {css: "text-align", jsx: "textAlign"},
+    {css: "box-shadow", jsx: "boxShadow"},
+    {css: "z-index", jsx: "zIndex"},
+    {css: "font-weight", jsx: "fontWeight"},
+    {css: "line-height", jsx: "lineHeight"}
   ];
 
   // JSX rules
@@ -591,32 +604,38 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 min-h-screen">
+    <div
+      className="bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 min-h-screen">
       <div className="container mx-auto py-20 px-4 max-w-6xl">
         {/* Enhanced Header */}
         <header className="text-center mb-20 animate-in fade-in slide-in-from-top-4 duration-1000">
-          <Badge className="mb-8 px-6 py-3 bg-primary/10 text-primary border-primary/20 rounded-full text-sm font-semibold tracking-wide shadow-lg">
-            <Sparkles className="w-4 h-4 mr-2" />
+          <Badge
+            className="mb-8 px-6 py-3 bg-primary/10 text-primary border-primary/20 rounded-full text-sm font-semibold tracking-wide shadow-lg">
+            <Sparkles className="w-4 h-4 mr-2"/>
             React Fundamentals
           </Badge>
 
-          <h1 className="text-6xl md:text-7xl font-black mt-6 mb-8 bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1
+            className="text-6xl md:text-7xl font-black mt-6 mb-8 bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent">
             Mastering JSX
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            Khám phá sức mạnh của JSX - cú pháp mở rộng JavaScript giúp xây dựng UI React một cách trực quan, hiệu quả và mạnh mẽ
+            Khám phá sức mạnh của JSX - cú pháp mở rộng JavaScript giúp xây dựng UI React một cách trực quan, hiệu quả
+            và mạnh mẽ
           </p>
 
-          <Separator className="my-12 max-w-lg mx-auto opacity-30" />
+          <Separator className="my-12 max-w-lg mx-auto opacity-30"/>
         </header>
 
         {/* Enhanced Introduction Card */}
-        <EnhancedCard className="mb-20 overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+        <EnhancedCard
+          className="mb-20 overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
           <EnhancedCardHeader>
             <div className="flex items-center gap-5">
-              <div className="h-16 w-16 rounded-3xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
-                <FileCode className="h-8 w-8 text-primary" />
+              <div
+                className="h-16 w-16 rounded-3xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
+                <FileCode className="h-8 w-8 text-primary"/>
               </div>
               <div>
                 <CardTitle className="text-3xl font-bold">JSX Là Gì?</CardTitle>
@@ -634,15 +653,17 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
               tạo ra một cách thức trực quan và mạnh mẽ để mô tả giao diện người dùng một cách declarative.
             </p>
 
-            <CodeBlock codeString={codeExampleBasic} />
+            <CodeBlock codeString={codeExampleBasic}/>
 
-            <div className="flex items-start p-8 rounded-3xl border-l-4 border-primary/60 bg-gradient-to-r from-primary/5 to-primary/8 backdrop-blur-sm">
-              <Info className="h-6 w-6 text-primary mt-1 mr-5 flex-shrink-0" />
+            <div
+              className="flex items-start p-8 rounded-3xl border-l-4 border-primary/60 bg-gradient-to-r from-primary/5 to-primary/8 backdrop-blur-sm">
+              <Info className="h-6 w-6 text-primary mt-1 mr-5 flex-shrink-0"/>
               <div className="space-y-3">
                 <h4 className="font-semibold text-slate-800 dark:text-slate-200">Lưu ý quan trọng</h4>
                 <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                   JSX không phải là HTML thuần túy. Nó được transpile thành các lệnh gọi hàm JavaScript
-                  (<code className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-xs">React.createElement()</code>)
+                  (<code
+                  className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-xs">React.createElement()</code>)
                   thông qua các công cụ như Babel. Điều này cho phép React tối ưu hóa performance thông qua Virtual DOM
                   và cung cấp các tính năng mạnh mẽ như hot reloading và tree shaking.
                 </p>
@@ -654,26 +675,33 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
         {/* Enhanced Examples Section */}
         <section className="mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-400">
           <div className="flex items-center gap-4 mb-10">
-            <div className="h-16 w-16 rounded-3xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
-              <Code className="h-8 w-8 text-primary" />
+            <div
+              className="h-16 w-16 rounded-3xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
+              <Code className="h-8 w-8 text-primary"/>
             </div>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
+            <h2
+              className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
               Các Ví Dụ Thực Tế
             </h2>
           </div>
 
           <Tabs defaultValue="expressions" className="mt-8">
-            <TabsList className="grid grid-cols-2 md:grid-cols-4 p-1.5 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl">
-              <TabsTrigger value="expressions" className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
+            <TabsList
+              className="grid grid-cols-2 md:grid-cols-4 p-1.5 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl">
+              <TabsTrigger value="expressions"
+                           className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
                 Biểu Thức
               </TabsTrigger>
-              <TabsTrigger value="attributes" className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
+              <TabsTrigger value="attributes"
+                           className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
                 Thuộc Tính
               </TabsTrigger>
-              <TabsTrigger value="lists" className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
+              <TabsTrigger value="lists"
+                           className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
                 Danh Sách
               </TabsTrigger>
-              <TabsTrigger value="conditions" className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
+              <TabsTrigger value="conditions"
+                           className="rounded-xl data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 transition-all font-medium">
                 Điều Kiện
               </TabsTrigger>
             </TabsList>
@@ -687,12 +715,14 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
                   </CardDescription>
                 </EnhancedCardHeader>
                 <CardContent className="space-y-6 p-8">
-                  <CodeBlock codeString={codeExampleExpression} />
+                  <CodeBlock codeString={codeExampleExpression}/>
                   <ResultPreview title="Demo component tương tác">
-                    <div className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-700 dark:to-slate-800 rounded-2xl space-y-4">
+                    <div
+                      className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-700 dark:to-slate-800 rounded-2xl space-y-4">
                       <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-200">Xin chào, {name}!</h1>
                       <p className="text-slate-600 dark:text-slate-400">Tuổi: 25</p>
-                      <span className="inline-flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium">
+                      <span
+                        className="inline-flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         Đang hoạt động
                       </span>
@@ -711,9 +741,10 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
                   </CardDescription>
                 </EnhancedCardHeader>
                 <CardContent className="space-y-6 p-8">
-                  <CodeBlock codeString={codeExampleAttributes} />
+                  <CodeBlock codeString={codeExampleAttributes}/>
                   <ResultPreview title="Avatar component responsive">
-                    <div className="flex items-center gap-6 p-6 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-2xl">
+                    <div
+                      className="flex items-center gap-6 p-6 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-2xl">
                       <img
                         src="https://via.placeholder.com/128/3b82f6/ffffff?text=User"
                         className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
@@ -739,14 +770,14 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
                   </CardDescription>
                 </EnhancedCardHeader>
                 <CardContent className="space-y-6 p-8">
-                  <CodeBlock codeString={codeExampleLists} />
+                  <CodeBlock codeString={codeExampleLists}/>
                   <ResultPreview title="Skills dashboard">
                     <div className="grid gap-4 md:grid-cols-2">
                       {[
-                        { name: "React", level: "Expert", color: "blue" },
-                        { name: "JavaScript", level: "Advanced", color: "yellow" },
-                        { name: "TypeScript", level: "Intermediate", color: "blue" },
-                        { name: "Node.js", level: "Advanced", color: "green" }
+                        {name: "React", level: "Expert", color: "blue"},
+                        {name: "JavaScript", level: "Advanced", color: "yellow"},
+                        {name: "TypeScript", level: "Intermediate", color: "blue"},
+                        {name: "Node.js", level: "Advanced", color: "green"}
                       ].map((skill, index) => (
                         <div
                           key={index}
@@ -757,7 +788,7 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
                           <div className="mt-2 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                             <div
                               className={`h-full bg-${skill.color}-500 rounded-full transition-all duration-500`}
-                              style={{ width: skill.level === "Expert" ? "90%" : skill.level === "Advanced" ? "75%" : "60%" }}
+                              style={{width: skill.level === "Expert" ? "90%" : skill.level === "Advanced" ? "75%" : "60%"}}
                             />
                           </div>
                         </div>
@@ -777,7 +808,7 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
                   </CardDescription>
                 </EnhancedCardHeader>
                 <CardContent className="space-y-6 p-8">
-                  <CodeBlock codeString={codeExampleConditions} />
+                  <CodeBlock codeString={codeExampleConditions}/>
                   <ResultPreview title="Dashboard tương tác">
                     <div className="space-y-6 p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg">
                       <header className="mb-6">
@@ -790,7 +821,8 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
 
                       <section className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
                         <h2 className="font-semibold text-blue-800 dark:text-blue-300">Quản trị viên</h2>
-                        <p className="text-sm text-blue-600 dark:text-blue-400">Bạn có quyền truy cập đầy đủ hệ thống</p>
+                        <p className="text-sm text-blue-600 dark:text-blue-400">Bạn có quyền truy cập đầy đủ hệ
+                          thống</p>
                       </section>
 
                       <div className="space-y-3">
@@ -800,7 +832,8 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
                           "Bạn có 5 tin nhắn mới",
                           "Cập nhật bảo mật đã hoàn thành"
                         ].map((message, index) => (
-                          <div key={index} className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 rounded">
+                          <div key={index}
+                               className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 rounded">
                             <p className="text-sm text-yellow-800 dark:text-yellow-300">{message}</p>
                           </div>
                         ))}
@@ -814,12 +847,14 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
         </section>
 
         {/* Enhanced Rules and Styles Grid */}
-        <div className="grid gap-10 lg:grid-cols-2 mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-600">
+        <div
+          className="grid gap-10 lg:grid-cols-2 mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-600">
           <EnhancedCard className="overflow-hidden">
             <EnhancedCardHeader>
               <div className="flex items-center gap-5">
-                <div className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
-                  <ListChecks className="h-7 w-7 text-primary" />
+                <div
+                  className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
+                  <ListChecks className="h-7 w-7 text-primary"/>
                 </div>
                 <div>
                   <CardTitle className="text-2xl font-bold">Quy tắc JSX</CardTitle>
@@ -843,8 +878,9 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
           <EnhancedCard className="overflow-hidden">
             <EnhancedCardHeader>
               <div className="flex items-center gap-5">
-                <div className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
-                  <Palette className="h-7 w-7 text-primary" />
+                <div
+                  className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
+                  <Palette className="h-7 w-7 text-primary"/>
                 </div>
                 <div>
                   <CardTitle className="text-2xl font-bold">CSS → JSX Mapping</CardTitle>
@@ -857,7 +893,7 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
             <CardContent className="p-8 space-y-6">
               <div className="space-y-3">
                 {cssToJsx.map((attr, index) => (
-                  <CSSMapping key={index} css={attr.css} jsx={attr.jsx} index={index} />
+                  <CSSMapping key={index} css={attr.css} jsx={attr.jsx} index={index}/>
                 ))}
               </div>
               <div className="mt-6 p-5 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
@@ -867,18 +903,20 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
   fontSize: "16px",
   borderRadius: "8px",
   marginTop: "20px"
-};`} language="javascript" />
+};`} language="javascript"/>
               </div>
             </CardContent>
           </EnhancedCard>
         </div>
 
         {/* Enhanced Inline Styles Section */}
-        <EnhancedCard className="mb-20 overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-800">
+        <EnhancedCard
+          className="mb-20 overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-800">
           <EnhancedCardHeader>
             <div className="flex items-center gap-5">
-              <div className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
-                <Palette className="h-7 w-7 text-primary" />
+              <div
+                className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
+                <Palette className="h-7 w-7 text-primary"/>
               </div>
               <div>
                 <CardTitle className="text-2xl font-bold">Inline Styles Nâng Cao</CardTitle>
@@ -889,7 +927,7 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
             </div>
           </EnhancedCardHeader>
           <CardContent className="space-y-6 p-8">
-            <CodeBlock codeString={codeExampleInlineStyle} />
+            <CodeBlock codeString={codeExampleInlineStyle}/>
             <ResultPreview title="Interactive styled button">
               <div className="flex gap-4 items-center justify-center p-6">
                 <button
@@ -942,11 +980,13 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
         </EnhancedCard>
 
         {/* Enhanced Fragments Section */}
-        <EnhancedCard className="mb-20 overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-1000">
+        <EnhancedCard
+          className="mb-20 overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-1000">
           <EnhancedCardHeader>
             <div className="flex items-center gap-5">
-              <div className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
-                <Layers className="h-7 w-7 text-primary" />
+              <div
+                className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
+                <Layers className="h-7 w-7 text-primary"/>
               </div>
               <div>
                 <CardTitle className="text-2xl font-bold">React Fragments</CardTitle>
@@ -981,17 +1021,17 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
               </TabsList>
               <div className="mt-6">
                 <TabsContent value="full" className="m-0">
-                  <CodeBlock codeString={codeExampleFragmentFull} />
+                  <CodeBlock codeString={codeExampleFragmentFull}/>
                 </TabsContent>
                 <TabsContent value="short" className="m-0">
-                  <CodeBlock codeString={codeExampleFragmentShort} />
+                  <CodeBlock codeString={codeExampleFragmentShort}/>
                 </TabsContent>
               </div>
             </Tabs>
 
             <div className="mt-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border-l-4 border-blue-500">
               <div className="flex items-start gap-3">
-                <Lightbulb className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                <Lightbulb className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0"/>
                 <div>
                   <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">Khi nào sử dụng Fragments?</h4>
                   <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
@@ -1009,10 +1049,12 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
         {/* Enhanced Benefits Section */}
         <div className="space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-1200">
           <div className="flex items-center gap-4 mb-8">
-            <div className="h-16 w-16 rounded-3xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
-              <Lightbulb className="h-8 w-8 text-primary" />
+            <div
+              className="h-16 w-16 rounded-3xl bg-primary/15 flex items-center justify-center ring-4 ring-primary/10">
+              <Lightbulb className="h-8 w-8 text-primary"/>
             </div>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
+            <h2
+              className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
               Lợi Ích Của JSX
             </h2>
           </div>
@@ -1045,20 +1087,24 @@ const UserProfile = ({ user, showActions = true, showBadges = true }) => {
           </div>
 
           <div className="flex items-center justify-center gap-6 flex-wrap">
-            <Badge variant="outline" className="text-sm px-4 py-2 bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300">
-              <Code className="w-4 h-4 mr-2" />
+            <Badge variant="outline"
+                   className="text-sm px-4 py-2 bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300">
+              <Code className="w-4 h-4 mr-2"/>
               React
             </Badge>
-            <Badge variant="outline" className="text-sm px-4 py-2 bg-purple-50 dark:bg-purple-950/30 border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300">
-              <FileCode className="w-4 h-4 mr-2" />
+            <Badge variant="outline"
+                   className="text-sm px-4 py-2 bg-purple-50 dark:bg-purple-950/30 border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300">
+              <FileCode className="w-4 h-4 mr-2"/>
               JSX
             </Badge>
-            <Badge variant="outline" className="text-sm px-4 py-2 bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300">
-              <Terminal className="w-4 h-4 mr-2" />
+            <Badge variant="outline"
+                   className="text-sm px-4 py-2 bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300">
+              <Terminal className="w-4 h-4 mr-2"/>
               JavaScript
             </Badge>
-            <Badge variant="outline" className="text-sm px-4 py-2 bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300">
-              <BookOpen className="w-4 h-4 mr-2" />
+            <Badge variant="outline"
+                   className="text-sm px-4 py-2 bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300">
+              <BookOpen className="w-4 h-4 mr-2"/>
               Tutorial
             </Badge>
           </div>
