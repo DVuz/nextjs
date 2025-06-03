@@ -207,7 +207,7 @@ function TheorySection() {
           </p>
           <div className="bg-white p-4 rounded border border-blue-300">
             <code className="text-sm text-blue-800">
-              const memoizedValue = useMemo(() => expensiveCalculation(a, b), [a, b]);
+              const memoizedValue = useMemo(() =&gt; expensiveCalculation(a, b), [a, b]);
             </code>
           </div>
         </div>
